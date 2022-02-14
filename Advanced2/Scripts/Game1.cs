@@ -25,6 +25,7 @@ namespace Advanced2
             _testObject = new GameObject();
             _testObject.OnCreated();
             _testObject.Position(new Vector2(200, 150));
+            _testObject.Rotation(90);
             base.Initialize();
         }
 
