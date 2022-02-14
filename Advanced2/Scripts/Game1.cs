@@ -9,6 +9,9 @@ namespace Advanced2
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        //Test object
+        GameObject _testObject;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -19,7 +22,9 @@ namespace Advanced2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            _testObject = new GameObject();
+            _testObject.OnCreated();
+            _testObject.Position(new Vector2(200, 150));
             base.Initialize();
         }
 
@@ -36,6 +41,9 @@ namespace Advanced2
                 Exit();
 
             // TODO: Add your update logic here
+            _spriteBatch.Begin();
+            _testObject.ObjectUpdate();
+            _spriteBatch.End();
 
             base.Update(gameTime);
         }
@@ -43,9 +51,8 @@ namespace Advanced2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
-
+            _testObject._SpriteRenderer(Content.Load<Texture2D>("MikuLeek"), _spriteBatch);
             base.Draw(gameTime);
         }
     }

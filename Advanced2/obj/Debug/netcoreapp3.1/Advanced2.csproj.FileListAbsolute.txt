@@ -22,3 +22,4 @@ C:\Users\meind\source\repos\Advanced2\Advanced2\obj\Debug\netcoreapp3.1\Advanced
 C:\Users\meind\source\repos\Advanced2\Advanced2\obj\Debug\netcoreapp3.1\Advanced2.dll
 C:\Users\meind\source\repos\Advanced2\Advanced2\obj\Debug\netcoreapp3.1\Advanced2.pdb
 C:\Users\meind\source\repos\Advanced2\Advanced2\obj\Debug\netcoreapp3.1\Advanced2.genruntimeconfig.cache
+C:\Users\meind\source\repos\Advanced2\Advanced2\bin\Debug\netcoreapp3.1\Content\MikuLeek.xnb
