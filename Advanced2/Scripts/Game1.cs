@@ -8,6 +8,7 @@ namespace Advanced2
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        Texture2D TestMikuTexture;
 
         //Test object
         GameObject _testObject;
@@ -21,11 +22,16 @@ namespace Advanced2
 
         protected override void Initialize()
         {
+            // 2D Textures
+            TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
+
             // TODO: Add your initialization logic here
             _testObject = new GameObject();
             _testObject.OnCreated();
-            _testObject.Position(new Vector2(200, 150));
-            _testObject.Rotation(90);
+            _testObject.Position(new Vector2(5, 5));
+            _testObject.Rotation(180);
+            _testObject.AnchorPoint(new Vector2((float)1, (float)1));
+            _testObject.scale(new Vector2(4, 4));
             base.Initialize();
         }
 
@@ -53,7 +59,7 @@ namespace Advanced2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
-            _testObject._SpriteRenderer(Content.Load<Texture2D>("MikuLeek"), _spriteBatch);
+            _testObject._SpriteRenderer(TestMikuTexture, _spriteBatch);
             base.Draw(gameTime);
         }
     }
