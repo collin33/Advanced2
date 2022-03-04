@@ -1,47 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-public class Transform : GameObject
+class Transform : GameObject
 {
-    private Vector2 _position = new Vector2(0,0);
-    private Vector2 _anchorPoint = new Vector2 (0,0);
+    private Vector2 _position = new Vector2(0, 0);
+    private Vector2 _anchorPoint = new Vector2(0, 0);
     private float _rotation = 0;
-    private Vector2 _scale = new Vector2 (1,1);
+    private Vector2 _scale = new Vector2(1, 1);
 
-    public Vector2 Position
-    {
-        get { return _position; }
-        set
+    public Transform(Vector2 Position, Vector2 AnchorPoint, float Rotation, Vector2 Scale)
         {
-            _position = value;
+        _position = Position;
+        _anchorPoint = AnchorPoint;
+        _rotation = Rotation;
+        _scale = Scale;
         }
-    }
-
-    public Vector2 AnchorPoint
-    {
-        get { return _anchorPoint; }
-        set
-        {
-            _anchorPoint = value;
-        }
-    }
-
-    public float Rotation
-    {
-        get { return _rotation; }
-        set
-        {
-            _rotation = value;
-        }
-    }
-
-    public Vector2 Scale
-    {
-        get { return _scale; }
-        set
-        {
-            _scale = value;
-        }
-    }
-
-
 }

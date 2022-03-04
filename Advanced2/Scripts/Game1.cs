@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Advanced2
 {
-    public class Game1 : Game
+    public class Game1: Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -12,7 +12,6 @@ namespace Advanced2
 
         //Test object
         GameObject _testObject;
-
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -25,13 +24,11 @@ namespace Advanced2
             // 2D Textures
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
-            // TODO: Add your initialization logic here
-            _testObject = new GameObject();
-            _testObject.OnCreated();
-            _testObject.Position(new Vector2(5, 5));
-            _testObject.Rotation(180);
-            _testObject.AnchorPoint(new Vector2((float)1, (float)1));
-            _testObject.scale(new Vector2(4, 4));
+            _testObject = new SpriteRenderer();
+            _testObject = new Transform(new Vector2(10,10), new Vector2((float)1, (float)1), 180, new Vector2(4, 4));
+            //_testObject.Rotation(180);
+            //_testObject.AnchorPoint();
+            //_testObject.scale();
             base.Initialize();
         }
 
@@ -50,6 +47,7 @@ namespace Advanced2
             // TODO: Add your update logic here
             _spriteBatch.Begin();
             _testObject.ObjectUpdate();
+
             _spriteBatch.End();
 
             base.Update(gameTime);
@@ -59,7 +57,7 @@ namespace Advanced2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
-            _testObject._SpriteRenderer(TestMikuTexture, _spriteBatch);
+            //_testObject._SpriteRenderer(TestMikuTexture, _spriteBatch);
             base.Draw(gameTime);
         }
     }
