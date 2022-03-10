@@ -1,20 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-public class SpriteRenderer : GameObject
+class SpriteRenderer: GameObject
 {
-    public void Draw(Texture2D texture, SpriteBatch spriteBatch, Vector2 position, float rotation, Vector2 anchorPoint, Vector2 scale)
+    private Texture2D _texture;
+    //private SpriteBatch _spriteBatch;
+    public SpriteRenderer(Texture2D texture)
     {
-        spriteBatch.Begin();
-        spriteBatch.Draw(texture, //Texture2D texture
-            position, //Vector2 position
-            null, //Rectangle sourceRectangle
-            Color.White, //Color color
-            MathHelper.ToRadians(rotation), //float rotation
-            anchorPoint, //Vector2 origin
-            scale, //float scale
-            SpriteEffects.None, //SpriteEffects effects
-            0 //float layerDepth
-            );
-        spriteBatch.End();
+        _texture = texture;
+        //_spriteBatch = spriteBatch;
+        //System.Diagnostics.Debug.Write("TESTETETETETETETETETETETETTETETETETTETE");
+    }
+
+    public override void Draw(Transform GameObject, SpriteBatch _spriteBatch, Texture2D textuuure)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
+    {
+        _spriteBatch.Begin();
+        _spriteBatch.Draw(textuuure, GameObject.Position, null, Color.White, MathHelper.ToRadians(GameObject.Rotation), GameObject.AnchorPoint, GameObject.Scale, SpriteEffects.None, 0);
+        _spriteBatch.End();
     }
 }
