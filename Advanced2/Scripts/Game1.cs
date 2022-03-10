@@ -11,12 +11,14 @@ namespace Advanced2
         Texture2D TestMikuTexture;
 
         //Test object
-        GameObject _testObject;
+        GameObject _testObj;
+        Transform _testObjT;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+
         }
 
         protected override void Initialize()
@@ -24,11 +26,9 @@ namespace Advanced2
             // 2D Textures
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
-            _testObject = new SpriteRenderer(Texture2D texture, SpriteBatch spriteBatch, Vector2 position, float rotation, Vector2 anchorPoint, Vector2 scale);
-            _testObject = new Transform(new Vector2(10,10), new Vector2((float)1, (float)1), 180, new Vector2(4, 4));
-            //_testObject.Rotation(180);
-            //_testObject.AnchorPoint();
-            //_testObject.scale();
+            _testObjT = new Transform(new Vector2(5,5), new Vector2((float)1, (float)1), 10, new Vector2(4, 4));
+            _testObj = new SpriteRenderer(TestMikuTexture);
+
             base.Initialize();
         }
 
@@ -46,8 +46,7 @@ namespace Advanced2
 
             // TODO: Add your update logic here
             _spriteBatch.Begin();
-            //_testObject.Draw();
-            _testObject.ObjectUpdate();
+            //_testObj.Draw(_testObjT, _spriteBatch, TestMikuTexture);
 
             _spriteBatch.End();
 
@@ -57,6 +56,7 @@ namespace Advanced2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            _testObj.Draw(_testObjT, _spriteBatch, TestMikuTexture);
             // TODO: Add your drawing code here
             //_testObject._SpriteRenderer(TestMikuTexture, _spriteBatch);
             base.Draw(gameTime);
