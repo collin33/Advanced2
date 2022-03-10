@@ -13,5 +13,11 @@ class Transform : GameObject
         _anchorPoint = AnchorPoint;
         _rotation = Rotation;
         _scale = Scale;
-        }
+
+        System.Diagnostics.Debug.Write("TESTETETETETETETETETETETETTETETETETTETE");
+    }
+    public override void ObjectUpdate()
+    {
+        System.Diagnostics.Debug.Write("TRANSFORM");
+    }
 }

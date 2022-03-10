@@ -24,7 +24,7 @@ namespace Advanced2
             // 2D Textures
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
-            _testObject = new SpriteRenderer();
+            _testObject = new SpriteRenderer(Texture2D texture, SpriteBatch spriteBatch, Vector2 position, float rotation, Vector2 anchorPoint, Vector2 scale);
             _testObject = new Transform(new Vector2(10,10), new Vector2((float)1, (float)1), 180, new Vector2(4, 4));
             //_testObject.Rotation(180);
             //_testObject.AnchorPoint();
@@ -46,6 +46,7 @@ namespace Advanced2
 
             // TODO: Add your update logic here
             _spriteBatch.Begin();
+            //_testObject.Draw();
             _testObject.ObjectUpdate();
 
             _spriteBatch.End();
