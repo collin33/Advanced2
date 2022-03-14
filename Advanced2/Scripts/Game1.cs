@@ -10,8 +10,9 @@ namespace Advanced2
         private SpriteBatch _spriteBatch;
         Texture2D TestMikuTexture;
 
-        //Test object
-        TestObject _testObj;
+        // GameObjects
+        RotaterObject _rotaterObj;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -26,7 +27,7 @@ namespace Advanced2
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
             // GameObjects
-            _testObj = new TestObject();
+            _rotaterObj = new RotaterObject(5);
 
             base.Initialize();
         }
@@ -44,7 +45,7 @@ namespace Advanced2
                 Exit();
 
             // TODO: Add your update logic here
-            _testObj.ObjectUpdate();
+            _rotaterObj.ObjectUpdate();
 
             base.Update(gameTime);
         }
@@ -53,7 +54,7 @@ namespace Advanced2
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
-            _testObj._SpriteRenderer.Draw(_testObj._Transform, _spriteBatch, TestMikuTexture);
+            _rotaterObj._SpriteRenderer.Draw(_rotaterObj._Transform, _spriteBatch, TestMikuTexture);
 
             base.Draw(gameTime);
         }
