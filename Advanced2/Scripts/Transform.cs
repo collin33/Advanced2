@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-class Transform : GameObject
+class Transform
 {
     private Vector2 _position = new Vector2(10, 10);
     private Vector2 _anchorPoint = new Vector2(0, 0);
@@ -15,6 +15,7 @@ class Transform : GameObject
         _scale = Scale;
     }
 
+    //Get en Set voor de transform waardes
     public Vector2 Position
     {
         get { return _position; }
