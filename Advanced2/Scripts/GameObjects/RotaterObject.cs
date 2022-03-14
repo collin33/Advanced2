@@ -13,6 +13,6 @@ class RotaterObject : GameObject
 
     public override void ObjectUpdate()
     {
-        _Transform.Rotation = _Transform.Rotation + RotaterPower;
+        _Transform.Rotation += RotaterPower;
     }
 }
