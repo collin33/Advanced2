@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Diagnostics;
 
 namespace Advanced2
 {
@@ -9,6 +11,8 @@ namespace Advanced2
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D TestMikuTexture;
+
+        Stopwatch _stopWatch;
 
         // GameObjects
         RotaterObject _rotaterObj;
@@ -23,11 +27,15 @@ namespace Advanced2
 
         protected override void Initialize()
         {
+            // Time
+            _stopWatch = new Stopwatch();
+            _stopWatch.Start();
+
             // 2D Textures
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
             // GameObjects
-            _rotaterObj = new RotaterObject(5);
+            _rotaterObj = new RotaterObject(1);
 
             base.Initialize();
         }
@@ -44,8 +52,16 @@ namespace Advanced2
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            _stopWatch.Stop();
+            TimeSpan ts = _stopWatch.Elapsed;
+
+            int elapsedTime = ts.Milliseconds;
+            System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
             // TODO: Add your update logic here
+            _rotaterObj.Time(elapsedTime);
             _rotaterObj.ObjectUpdate();
+
+            _stopWatch.Restart();
 
             base.Update(gameTime);
         }

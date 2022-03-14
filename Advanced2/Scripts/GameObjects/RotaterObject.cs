@@ -6,6 +6,7 @@ class RotaterObject : GameObject
     public Transform _Transform = new Transform(new Vector2(96, 96), new Vector2((float)0.5, (float)0.5), 0, new Vector2(2, 2));
     public SpriteRenderer _SpriteRenderer = new SpriteRenderer(null);
     private int RotaterPower;
+    private int TimeInMilliseconds;
 
     public RotaterObject(int RotationSpeed){
         RotaterPower = RotationSpeed;
@@ -13,6 +14,11 @@ class RotaterObject : GameObject
 
     public override void ObjectUpdate()
     {
-        _Transform.Rotation += RotaterPower;
+        _Transform.Rotation +=  TimeInMilliseconds;
+    }
+
+    public void Time(int CurrentTime)
+    {
+        TimeInMilliseconds = CurrentTime;
     }
 }
