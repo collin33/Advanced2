@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 class Transform
 {
-    private Vector2 _position = new Vector2(10, 10);
+    public Vector2 _position = new Vector2(10, 10);
     private Vector2 _anchorPoint = new Vector2(0, 0);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);

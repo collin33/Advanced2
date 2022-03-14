@@ -16,6 +16,7 @@ namespace Advanced2
 
         // GameObjects
         RotaterObject _rotaterObj;
+        BounceObject _bounceObj;
 
         public Game1()
         {
@@ -36,6 +37,7 @@ namespace Advanced2
 
             // GameObjects
             _rotaterObj = new RotaterObject(1);
+            _bounceObj = new BounceObject(96,3);
 
             base.Initialize();
         }
@@ -57,9 +59,12 @@ namespace Advanced2
 
             int elapsedTime = ts.Milliseconds;
             System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
-            // TODO: Add your update logic here
+
             _rotaterObj.Time(elapsedTime);
             _rotaterObj.ObjectUpdate();
+
+            _bounceObj.Time(elapsedTime);
+            _bounceObj.ObjectUpdate();
 
             _stopWatch.Restart();
 
@@ -71,6 +76,7 @@ namespace Advanced2
             GraphicsDevice.Clear(Color.CornflowerBlue);
             // TODO: Add your drawing code here
             _rotaterObj._SpriteRenderer.Draw(_rotaterObj._Transform, _spriteBatch, TestMikuTexture);
+            _bounceObj._SpriteRenderer.Draw(_bounceObj._Transform, _spriteBatch, TestMikuTexture);
 
             base.Draw(gameTime);
         }
