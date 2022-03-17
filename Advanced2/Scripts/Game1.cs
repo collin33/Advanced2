@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -17,6 +17,7 @@ namespace Advanced2
         // GameObjects
         RotaterObject _rotaterObj;
         BounceObject _bounceObj;
+        ScaleObject _scaleObj;
 
         public Game1()
         {
@@ -58,7 +59,7 @@ namespace Advanced2
             TimeSpan ts = _stopWatch.Elapsed;
 
             int elapsedTime = ts.Milliseconds;
-            System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
+            //System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
 
             _rotaterObj.Time(elapsedTime);
             _rotaterObj.ObjectUpdate();
@@ -74,6 +75,7 @@ namespace Advanced2
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            
             // TODO: Add your drawing code here
             _rotaterObj._SpriteRenderer.Draw(_rotaterObj._Transform, _spriteBatch, TestMikuTexture);
             _bounceObj._SpriteRenderer.Draw(_bounceObj._Transform, _spriteBatch, TestMikuTexture);

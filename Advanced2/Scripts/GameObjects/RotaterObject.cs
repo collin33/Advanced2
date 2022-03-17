@@ -20,6 +20,6 @@ class RotaterObject : GameObject
 
     public void Time(int CurrentTime)
     {
-        TimeInMilliseconds = CurrentTime;
+        TimeInMilliseconds = CurrentTime/10;
     }
 }
