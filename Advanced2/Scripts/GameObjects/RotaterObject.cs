@@ -15,7 +15,9 @@ class RotaterObject : GameObject
 
     public override void ObjectUpdate()
     {
-        _Transform.Rotation +=  RotaterPower* TimeInMilliseconds;
+        if (TimeInMilliseconds > 10800)
+        { TimeInMilliseconds -= 10800; }
+        _Transform.Rotation += RotaterPower * TimeInMilliseconds;
     }
 
     public void Time(int CurrentTime)

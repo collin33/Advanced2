@@ -37,8 +37,9 @@ namespace Advanced2
             TestMikuTexture = Content.Load<Texture2D>("MikuLeek");
 
             // GameObjects
-            _rotaterObj = new RotaterObject(1);
-            _bounceObj = new BounceObject(96,3);
+            _rotaterObj = new RotaterObject(-4);
+            _bounceObj = new BounceObject(96,(float)0.5);
+            _scaleObj = new ScaleObject((float)0.25, (float)0.3);
 
             base.Initialize();
         }
@@ -67,6 +68,9 @@ namespace Advanced2
             _bounceObj.Time(elapsedTime);
             _bounceObj.ObjectUpdate();
 
+            _scaleObj.Time(elapsedTime);
+            _scaleObj.ObjectUpdate();
+
             _stopWatch.Restart();
 
             base.Update(gameTime);
@@ -79,6 +83,7 @@ namespace Advanced2
             // TODO: Add your drawing code here
             _rotaterObj._SpriteRenderer.Draw(_rotaterObj._Transform, _spriteBatch, TestMikuTexture);
             _bounceObj._SpriteRenderer.Draw(_bounceObj._Transform, _spriteBatch, TestMikuTexture);
+            _scaleObj._SpriteRenderer.Draw(_scaleObj._Transform, _spriteBatch, TestMikuTexture);
 
             base.Draw(gameTime);
         }

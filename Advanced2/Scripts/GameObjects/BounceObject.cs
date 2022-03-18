@@ -10,10 +10,10 @@ class BounceObject : GameObject
 
     private int StartPosition = 96*2;
     private int BounceHeight;
-    private int BounceSpeed;
+    private float BounceSpeed;
     private int TimeInMilliseconds;
 
-    public BounceObject(int Height, int Speed)
+    public BounceObject(int Height, float Speed)
     {
         BounceHeight = Height;
         BounceSpeed = Speed;
@@ -21,15 +21,13 @@ class BounceObject : GameObject
 
     public override void ObjectUpdate()
     {
-        if (TimeInMilliseconds > 180)
-        {
-            TimeInMilliseconds -= 180;
-        }
-        _Transform._position.Y = StartPosition - (BounceHeight * MathF.Sin(TimeInMilliseconds));
+        if (TimeInMilliseconds > 10800)
+        { TimeInMilliseconds -= 10800; }
+        _Transform.PositionY = StartPosition - (BounceHeight * MathF.Sin((float)TimeInMilliseconds/30));
     }
 
     public void Time(int CurrentTime)
     {
-        TimeInMilliseconds += CurrentTime/10;
+        TimeInMilliseconds += (int)((CurrentTime / 2) * BounceSpeed);
     }
 }

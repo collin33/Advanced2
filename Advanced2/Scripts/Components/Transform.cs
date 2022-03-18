@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 class Transform
 {
-    public Vector2 _position = new Vector2(10, 10);
+    private Vector2 _position = new Vector2(10, 10);
     private Vector2 _anchorPoint = new Vector2(0, 0);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);
@@ -15,40 +15,53 @@ class Transform
         _scale = Scale;
     }
 
-    //Get en Set voor de transform waardes
+    #region Get and set values
     public Vector2 Position
     {
         get { return _position; }
-        set
-        {
-            _position = value;
-        }
+        set { _position = value; }
+    }
+
+    public float PositionX
+    {
+        get { return _position.X; }
+        set { _position.X = value; }
+    }
+
+    public float PositionY
+    {
+        get { return _position.Y; }
+        set { _position.Y = value; }
     }
 
     public Vector2 AnchorPoint
     {
         get { return _anchorPoint; }
-        set
-        {
-            _anchorPoint = value;
-        }
+        set { _anchorPoint = value; }
     }
 
     public int Rotation
     {
         get { return _rotation; }
-        set
-        {
-            _rotation = value;
-        }
+        set { _rotation = value; }
     }
 
     public Vector2 Scale
     {
         get { return _scale; }
-        set
-        {
-            _scale = value;
-        }
+        set { _scale = value; }
     }
+
+    public float ScaleX
+    {
+        get { return _scale.X; }
+        set { _scale.X = value; }
+    }
+
+    public float ScaleY
+    {
+        get { return _scale.Y; }
+        set { _scale.Y = value; }
+    }
+    #endregion
 }
