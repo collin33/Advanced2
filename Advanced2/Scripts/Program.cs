@@ -7,7 +7,7 @@ namespace Advanced2
         [STAThread]
         static void Main()
         {
-            using (var game = new PositionTestScene())
+            using (var game = new OriginTestScene())
                 game.Run();
         }
     }
