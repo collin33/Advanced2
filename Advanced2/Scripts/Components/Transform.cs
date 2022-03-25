@@ -6,6 +6,7 @@ class Transform
     private Vector2 _anchorPoint = new Vector2(0, 0);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);
+    private float _layerdepth = 0;
 
     public Transform(Vector2 Position, Vector2 AnchorPoint, int Rotation, Vector2 Scale)
     {
@@ -62,6 +63,12 @@ class Transform
     {
         get { return _scale.Y; }
         set { _scale.Y = value; }
+    }
+
+    public float LayerDepth
+    {
+        get { return _layerdepth; }
+        set { _layerdepth = value; }
     }
     #endregion
 }
