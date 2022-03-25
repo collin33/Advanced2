@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 class SpriteRenderer
 {
     private Texture2D _texture;
@@ -11,8 +12,12 @@ class SpriteRenderer
 
     public void Draw(Transform GameObject, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
     {
-        _spriteBatch.Begin();
-        _spriteBatch.Draw(Texture, GameObject.Position, null, Color.White, MathHelper.ToRadians(GameObject.Rotation), new Vector2 (GameObject.AnchorPoint.X * Texture.Width, GameObject.AnchorPoint.Y * Texture.Height) , GameObject.Scale, SpriteEffects.None, GameObject.LayerDepth);
-        _spriteBatch.End();
+        _spriteBatch.Draw(Texture, GameObject.Position, null, Color.White, MathHelper.ToRadians(GameObject.Rotation), new Vector2 (GameObject.AnchorPoint.X * Texture.Width, GameObject.AnchorPoint.Y * Texture.Height) , GameObject.Scale, SpriteEffects.None, (Single)GameObject.LayerDepth);
+    }
+
+    public Texture2D Texture
+    {
+        get { return _texture; }
+        set { _texture = value; }
     }
 }

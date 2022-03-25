@@ -1,12 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 class Transform
 {
     private Vector2 _position = new Vector2(10, 10);
     private Vector2 _anchorPoint = new Vector2(0, 0);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);
-    private float _layerdepth = 0;
+    private Single _layerdepth = 0;
 
     public Transform(Vector2 Position, Vector2 AnchorPoint, int Rotation, Vector2 Scale)
     {
@@ -65,7 +66,7 @@ class Transform
         set { _scale.Y = value; }
     }
 
-    public float LayerDepth
+    public Single LayerDepth
     {
         get { return _layerdepth; }
         set { _layerdepth = value; }
