@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 class Transform
 {
-    private Vector2 _position = new Vector2(10, 10);
+    private Vector2 _position = new Vector2(0, 0);
     private Vector2 _anchorPoint = new Vector2(0, 0);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);
@@ -15,6 +15,15 @@ class Transform
         _anchorPoint = AnchorPoint;
         _rotation = Rotation;
         _scale = Scale;
+    }
+
+    void ResetTransform()
+    {
+            _position = new Vector2(0, 0);
+            _anchorPoint = new Vector2(0, 0);
+            _rotation = 0;
+            _scale = new Vector2(1, 1);
+            _layerdepth = 0;
     }
 
     #region Get and set values
