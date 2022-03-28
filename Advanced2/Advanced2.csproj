@@ -11,8 +11,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Scripts\NewFolder\**" />
+    <Compile Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
     <EmbeddedResource Remove="Scripts\NewFolder\**" />
+    <EmbeddedResource Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
     <None Remove="Scripts\NewFolder\**" />
+    <None Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Icon.ico" />
@@ -31,8 +34,5 @@
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.0.1641" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\TestScenes\Opdracht 3\Scene Summaries\" />
   </ItemGroup>
 </Project>

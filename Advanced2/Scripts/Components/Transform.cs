@@ -4,7 +4,7 @@ using System;
 class Transform
 {
     private Vector2 _position = new Vector2(0, 0);
-    private Vector2 _anchorPoint = new Vector2(0, 0);
+    private Vector2 _anchorPoint = new Vector2((float)0.5,(float)0.5);
     private int _rotation = 0;
     private Vector2 _scale = new Vector2(1, 1);
     private Single _layerdepth = 0;
@@ -17,10 +17,10 @@ class Transform
         _scale = Scale;
     }
 
-    void ResetTransform()
+    public void ResetTransform()
     {
             _position = new Vector2(0, 0);
-            _anchorPoint = new Vector2(0, 0);
+            _anchorPoint = new Vector2((float)0.5,(float)0.5);
             _rotation = 0;
             _scale = new Vector2(1, 1);
             _layerdepth = 0;

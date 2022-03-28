@@ -7,7 +7,7 @@ namespace Advanced2
         [STAThread]
         static void Main()
         {
-            using (var game = new LayerDepthTestScene())
+            using (var game = new GlobalTestScene())
                 game.Run();
         }
     }
