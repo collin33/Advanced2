@@ -12,6 +12,9 @@ namespace Advanced2
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        // Font that we'll use
+        SpriteFont Arial;
+
         //Stanrdard texture for all GameObjects
         Texture2D TestMikuTexture;
 
@@ -31,6 +34,7 @@ namespace Advanced2
         int NoOfScenes = 4;
         int CurrentScene = 4;
         int AmountOfGameObjects = 9;
+        string SceneText = "No Scene loaded";
 
         bool SpacebarHeld = false;
 
@@ -63,6 +67,10 @@ namespace Advanced2
                 GameObjects[i] = new GameObject();
             }
 
+            // Load the font that we'll use
+            Arial = Content.Load<SpriteFont>("Arial");
+
+            //Call SceneSwitch so we don't end up with a bunch of sprites in the corner. This is also why we put CurrentScene at the max of NoOfScenes, so It'll look back to 0
             SceneSwitch();
 
             base.Initialize();
@@ -99,7 +107,7 @@ namespace Advanced2
             {
                 GameObjects[i]._SpriteRenderer.Draw(GameObjects[i]._Transform, _spriteBatch, TestMikuTexture);
             }
-
+            _spriteBatch.DrawString(Arial, SceneText, new Vector2(10, 10), Color.Black);
             _spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -121,8 +129,6 @@ namespace Advanced2
                 {
                     GameObjects[i]._Transform.ResetTransform();
                 }
-
-                Debug.WriteLine("Current: " + CurrentScene + " Total: " + NoOfScenes);
                 switch (CurrentScene)  // Call the correct void that updates the GameObject Transforms
                 {
                     case 0:
@@ -149,6 +155,8 @@ namespace Advanced2
         #region Voids that update GameObject Transforms during a scene switch
         void Test0() //LayerDepth
         {
+            SceneText = "Press Space to Advance          [X] LayerDepth     [   ] Origin     [   ] Position     [   ] Rotate     [   ] Scale";
+
             AmountOfGameObjects = 9;
             GameObjects[0]._Transform.Position = new Vector2(96, 96);
             GameObjects[1]._Transform.Position = new Vector2(96, (int)(96 * 1.5));
@@ -172,6 +180,8 @@ namespace Advanced2
         }
         void Test1() //Origin
         {
+            SceneText = "Press Space to Advance          [   ] LayerDepth     [X] Origin     [   ] Position     [   ] Rotate     [   ] Scale";
+
             AmountOfGameObjects = 4;
             GameObjects[0]._Transform.Position = new Vector2(96, (int)(96*1.5));
             GameObjects[1]._Transform.Position = new Vector2(96, (int)(96*1.5));
@@ -185,6 +195,8 @@ namespace Advanced2
         }
         void Test2() //Position
         {
+            SceneText = "Press Space to Advance          [   ] LayerDepth     [   ] Origin     [X] Position     [   ] Rotate     [   ] Scale";
+
             AmountOfGameObjects = 5;
             GameObjects[0]._Transform.Position = new Vector2(50, 50  +46);
             GameObjects[1]._Transform.Position = new Vector2(250, 50 +46);
@@ -194,6 +206,8 @@ namespace Advanced2
         }
         void Test3() //Rotate
         {
+            SceneText = "Press Space to Advance          [   ] LayerDepth     [   ] Origin     [   ] Position     [X] Rotate     [   ] Scale";
+
             AmountOfGameObjects = 5;
             GameObjects[0]._Transform.Position = new Vector2(96, 96);
             GameObjects[1]._Transform.Position = new Vector2(96 * 2, 96);
@@ -209,6 +223,8 @@ namespace Advanced2
         }
         void Test4() //Scale
         {
+            SceneText = "Press Space to Advance          [   ] LayerDepth     [   ] Origin     [   ] Position     [   ] Rotate     [X] Scale";
+
             AmountOfGameObjects = 6;
             // GameObject transform positions
             GameObjects[0]._Transform.Position = new Vector2(0              , 0              +48);
