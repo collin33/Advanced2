@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-class SpriteRenderer
+class SpriteRenderer : MonoBehaviour
 {
     private Texture2D _texture;
     //private SpriteBatch _spriteBatch;
