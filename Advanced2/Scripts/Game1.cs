@@ -19,12 +19,13 @@ namespace Advanced2
         Stopwatch _stopWatch;
 
 
+        GameObject test;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-
         }
 
         protected override void Initialize()
@@ -38,26 +39,28 @@ namespace Advanced2
 
         protected override void LoadContent()
         {
+            base.LoadContent();
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Viewport viewport = _graphics.GraphicsDevice.Viewport;
             _littleStarTexture = Content.Load<Texture2D>("LittleStar");
             _defaultFont = Content.Load<SpriteFont>("Arial");
 
-            Transform testTransform = new Transform(new Vector2(viewport.Width * 0.5, viewport.Height * 0.5f));
-            SpriteRenderer testRenderer = new SpriteRenderer(_littleStarTexture);
-            Rotator testRotator = new Rotator(10, 2);
-            Oscillator testOscillator = new Oscillator(10, 2);
-            ColorShifterObject testColorShifter = new ColorShifter(2.0f);
-            Scaler testScaler = new Scaler(2.0f);//optional
+            Transform testTransform = new Transform(new Vector2(viewport.Width * 0.5f, viewport.Height * 0.5f), new Vector2 (0.5f,0.5f),0, new Vector2(3,3));
+            SpriteRenderer testRenderer = new SpriteRenderer(_littleStarTexture, _spriteBatch);
+            Rotator testRotator = new Rotator(10);
+            //Oscillator testOscillator = new Oscillator(10, 2);
+            //ColorShifterObject testColorShifter = new ColorShifter(2.0f);
+            //Scaler testScaler = new Scaler(2.0f);//optional
 
-            List<MonoBehaviour> testComponents = new List<MonoBehaviour>
-            {testRenderer, testRotator, testOscillator, testScaler};
+            //List<MonoBehaviour> testComponents = new List<MonoBehaviour>{testRenderer, testRotator, testOscillator, testScaler};
+            List<MonoBehaviour> testComponents = new List<MonoBehaviour> { testRenderer, testRotator};
 
-            GameObject test = new GameObject("test", testTransform,
-                new List<MonoBehaviour>() { testRenderer, testRotator, testOscillator, testColorShifter, testScaler });
-
+            //GameObject test = new GameObject("test", testTransform, new List<MonoBehaviour>() { testRenderer, testRotator, testOscillator, testColorShifter, testScaler});
+            test = new GameObject("test", testTransform, testComponents);
             // TODO: use this.Content to load your game content here
+
+            test.Awake();
         }
 
         protected override void Update(GameTime gameTime)
@@ -71,7 +74,7 @@ namespace Advanced2
             int elapsedTime = ts.Milliseconds;
             //System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
 
-
+            test.Update();
             _stopWatch.Restart();
 
             base.Update(gameTime);
@@ -83,7 +86,7 @@ namespace Advanced2
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin(SpriteSortMode.FrontToBack);
-
+            test.Draw();
             _spriteBatch.End();
 
             base.Draw(gameTime);

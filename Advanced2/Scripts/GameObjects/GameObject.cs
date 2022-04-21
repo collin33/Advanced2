@@ -1,50 +1,79 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
-class GameObject
+namespace Advanced2
 {
-    //Fields
-    private string _name;
-
-    private Transform _transform = new Transform(new Vector2(0, 0), new Vector2((float)0.5, (float)0.5), 0, new Vector2(1, 1));
-
-    private List<MonoBehaviour> _components = new List<MonoBehaviour>();
-
-    //Properties
-    public string Name => _name;
-    public Transform Transform => _transform;
-
-
-    //Constructor
-    public GameObject(string pName, Transform pTransform, params MonoBehaviour[] pComponents)
+    public class GameObject
     {
-        _name = pName;
-        _transform = pTransform;
-        _components.AddRange(pComponents);
-    }
+        //Fields
+        private string _name;
 
-    public T GetComponent<T>() where T : MonoBehaviour
-    {
-        for (int i = 0; i < _components.Count; i++)
+        private Transform _transform;
+
+        private List<MonoBehaviour> _components = new List<MonoBehaviour>();
+
+        //Properties
+        public string Name => _name;
+        public Transform Transform => _transform;
+
+
+        //Constructor
+        public GameObject(string pName, Transform pTransform, List<MonoBehaviour> testComponents)
         {
-            MonoBehaviour currentBehaviour = _components[i];
-
-            //Entity
-            //Player -> Entity
-            //Enemy -> Entity
-
-            if (currentBehaviour.GetType() == typeof(T))
-            {
-                return currentBehaviour as T;
-            }
-
+            _name = pName;
+            _transform = pTransform;
+            _components.AddRange(testComponents);
         }
-        return null;
-    }
 
-    public virtual void ObjectUpdate()
-    {
-        //System.Diagnostics.Debug.Write("GameObjectUpdate"); 
+        public void Awake()
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Awake(this);
+            }
+            Debug.WriteLine(_components.Count);
+        }
+
+        public void Update() 
+        {
+            //Debug.WriteLine("OUTSIDE LOOP");
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Update();
+                //Debug.WriteLine("INSIDE LOOP"[i]);
+            }
+        }
+
+        public void Draw()
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Draw();
+            }
+        }
+
+        public T GetComponent<T>() where T : MonoBehaviour
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                MonoBehaviour currentBehaviour = _components[i];
+
+                if (currentBehaviour is T)
+                {
+                    return currentBehaviour as T;
+                }
+
+            }
+            return null;
+        }
+
+        public virtual void ObjectUpdate()
+        {
+            //System.Diagnostics.Debug.Write("GameObjectUpdate"); 
+            GetComponent<SpriteRenderer>();
+        }
     }
 }

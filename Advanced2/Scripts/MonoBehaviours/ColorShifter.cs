@@ -1,13 +1,18 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-
-    public class ColorShifterObject : MonoBehaviour
+﻿using Microsoft.Xna.Framework;
+using System;
+namespace Advanced2
+{
+    public class ColorShifter : MonoBehaviour
     {
         //Fields - configurable
         private float _shiftSpeed;
 
         //Fields - internal
         private float _hue;
+
+        private GameObject _gameObject;
+
+        private SpriteRenderer _spriteRenderer;
 
         //Properties
         public float ShiftSpeed
@@ -16,17 +21,26 @@ using Microsoft.Xna.Framework;
             set => _shiftSpeed = value;
         }
 
-        ////Constructors
-        //public ColorShifterObject(string pName, Transform pTransform, SpriteRenderer pRenderer, float pShiftSpeed) : base(pName, pTransform, pRenderer)
-        //{
-        //    _shiftSpeed = pShiftSpeed;
-        //}
+        //Constructors
+        public ColorShifter(GameObject gameObject)
+        {
+            _gameObject = gameObject;
+        }
+
+        public override void Awake(GameObject gameObject)
+        {
+            _spriteRenderer = _gameObject.GetComponent<SpriteRenderer>();
+        }
+
 
         //Methods - overridden
-        public void Update()
+        public override void Update()
         {
             //Updating the _hue value according to the passed time since the last Update call, multiplied with the configured shift speed.
-            _hue += (float)(pGameTime.ElapsedGameTime.TotalSeconds * _shiftSpeed);
+            //_hue += (float)(pGameTime.ElapsedGameTime.TotalSeconds * _shiftSpeed);
+
+            //quick fix
+            _hue += 0.05f;
 
             //Keeps the _hue value below 1.0f, while keeping the excess value, example: 1.03f becomes 0.03f 
             _hue %= 1.0f;
@@ -35,7 +49,7 @@ using Microsoft.Xna.Framework;
             //Saturation is hardcoded to 1.0f and Lightness is hardcoded to 0.5f for the brightest color representation
 
             //TODO Change SpriteRenderer property to a cached reference to the attached SpriteRenderer component via GetComponent<T>
-            SpriteRenderer.Color = HSLToRGB(_hue, 1.0f, 0.5f);
+            _spriteRenderer.Color = HSLToRGB(_hue, 1.0f, 0.5f);
         }
 
         //Methods - ColorShift
@@ -86,3 +100,4 @@ using Microsoft.Xna.Framework;
             return (int)Math.Min(255, 256 * pValue);
         }
     }
+}
