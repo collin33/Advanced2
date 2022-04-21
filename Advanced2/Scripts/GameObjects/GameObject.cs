@@ -37,13 +37,11 @@ namespace Advanced2
             Debug.WriteLine(_components.Count);
         }
 
-        public void Update() 
+        public void Update(int Time) 
         {
-            //Debug.WriteLine("OUTSIDE LOOP");
             for (int i = 0; i < _components.Count; i++)
             {
-                _components[i].Update();
-                //Debug.WriteLine("INSIDE LOOP"[i]);
+                _components[i].Update(Time);
             }
         }
 

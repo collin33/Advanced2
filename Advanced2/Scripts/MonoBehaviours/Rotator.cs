@@ -11,14 +11,20 @@
             RotaterPower = RotationSpeed;
         }
 
-        public void Update()
+        public override void Awake(GameObject gameObject)
+        {
+            _transform = gameObject.Transform;
+        }
+
+        public override void Update(int Time)
         {
             if (TimeInMilliseconds > 10800)
             { TimeInMilliseconds -= 10800; }
+            TimeDecreaser(Time);
             _transform.Rotation += RotaterPower * TimeInMilliseconds;
         }
 
-        public void Time(int CurrentTime)
+        private void TimeDecreaser(int CurrentTime)
         {
             TimeInMilliseconds = CurrentTime / 10;
         }

@@ -34,7 +34,7 @@ namespace Advanced2
 
 
         //Methods - overridden
-        public override void Update()
+        public override void Update(int Time)
         {
             //Updating the _hue value according to the passed time since the last Update call, multiplied with the configured shift speed.
             //_hue += (float)(pGameTime.ElapsedGameTime.TotalSeconds * _shiftSpeed);

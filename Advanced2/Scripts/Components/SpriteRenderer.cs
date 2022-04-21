@@ -7,7 +7,7 @@ namespace Advanced2
     {
         private Texture2D _texture;
         private Color _color = Color.White;
-        private GameObject _gameObject;
+        private Transform _transform;
         private SpriteBatch _spriteBatch;
 
         //Constructors
@@ -19,19 +19,19 @@ namespace Advanced2
 
         public override void Awake(GameObject gameObject)
         {
-            _gameObject = gameObject;
+            _transform = gameObject.Transform;
         }
 
 
         public override void Draw()
         {
-            _Draw(_gameObject.Transform, _spriteBatch, _texture);
+            _Draw(_transform, _spriteBatch, _texture);
         }
 
 
-        private void _Draw(Transform GameObject, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
+        private void _Draw(Transform transform, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
         {
-            _spriteBatch.Draw(Texture, GameObject.Position, null, _color, MathHelper.ToRadians(GameObject.Rotation), new Vector2(GameObject.AnchorPoint.X * Texture.Width, GameObject.AnchorPoint.Y * Texture.Height), GameObject.Scale, SpriteEffects.None, (Single)GameObject.LayerDepth);
+            _spriteBatch.Draw(Texture, transform.Position, null, _color, MathHelper.ToRadians(transform.Rotation), new Vector2(transform.AnchorPoint.X * Texture.Width, transform.AnchorPoint.Y * Texture.Height), transform.Scale, SpriteEffects.None, (Single)transform.LayerDepth);
             Console.WriteLine("RENDER");
         }
 

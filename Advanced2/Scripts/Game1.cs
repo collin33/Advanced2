@@ -74,7 +74,7 @@ namespace Advanced2
             int elapsedTime = ts.Milliseconds;
             //System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
 
-            test.Update();
+            test.Update(elapsedTime);
             _stopWatch.Restart();
 
             base.Update(gameTime);

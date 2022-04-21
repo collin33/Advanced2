@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/19GDJ3/Advanced2/Advanced2/Advanced2/Content/LittleStar.png</SourceFile>
-  <SourceTime>2022-01-18T17:52:10+01:00</SourceTime>
+  <SourceTime>2022-04-21T20:55:58.3976144+02:00</SourceTime>
   <DestFile>D:/19GDJ3/Advanced2/Advanced2/Advanced2/Content/bin/DesktopGL/Content/LittleStar.xnb</DestFile>
-  <DestTime>2022-04-21T13:15:20.5969734+02:00</DestTime>
+  <DestTime>2022-04-21T20:56:01.1428673+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
