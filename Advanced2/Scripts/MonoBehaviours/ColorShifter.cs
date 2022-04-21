@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Diagnostics;
+
 namespace Advanced2
 {
     public class ColorShifter : MonoBehaviour
@@ -14,6 +16,8 @@ namespace Advanced2
 
         private SpriteRenderer _spriteRenderer;
 
+        private float TimePassedInMilliseconds;
+
         //Properties
         public float ShiftSpeed
         {
@@ -22,13 +26,15 @@ namespace Advanced2
         }
 
         //Constructors
-        public ColorShifter(GameObject gameObject)
+        public ColorShifter(float ShiftSpeed)
         {
-            _gameObject = gameObject;
+            //Don't be shy when setting ShiftSpeed. ShiftSpeed at 1 already is pretty slow.
+            _shiftSpeed = ShiftSpeed;
         }
 
         public override void Awake(GameObject gameObject)
         {
+            _gameObject = gameObject;
             _spriteRenderer = _gameObject.GetComponent<SpriteRenderer>();
         }
 
@@ -36,14 +42,19 @@ namespace Advanced2
         //Methods - overridden
         public override void Update(int Time)
         {
+            TimeFormula(Time);
+
+            //Make sure the Time being tracked doesn't go all that high, helps with loops and such
+            if (TimePassedInMilliseconds > 10800)
+            { TimePassedInMilliseconds -= 10800; }
+
+            //Debug.WriteLine((float)(TimeInMilliseconds/1080));
+
             //Updating the _hue value according to the passed time since the last Update call, multiplied with the configured shift speed.
-            //_hue += (float)(pGameTime.ElapsedGameTime.TotalSeconds * _shiftSpeed);
+            _hue += TimePassedInMilliseconds / 10800;
 
-            //quick fix
-            _hue += 0.05f;
-
-            //Keeps the _hue value below 1.0f, while keeping the excess value, example: 1.03f becomes 0.03f 
-            _hue %= 1.0f;
+            //keep _hue below 1.0f
+            _hue %= -1.0f;
 
             //Applying the calculated RGB value to the SpriteRenderer based on the _hue value
             //Saturation is hardcoded to 1.0f and Lightness is hardcoded to 0.5f for the brightest color representation
@@ -98,6 +109,11 @@ namespace Advanced2
         private int To255(float pValue)
         {
             return (int)Math.Min(255, 256 * pValue);
+        }
+
+        private void TimeFormula(int CurrentTime)
+        {
+            TimePassedInMilliseconds = (CurrentTime * _shiftSpeed);
         }
     }
 }

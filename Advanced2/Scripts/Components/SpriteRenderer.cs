@@ -1,15 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+
 namespace Advanced2
 {
     class SpriteRenderer : MonoBehaviour
     {
         private Texture2D _texture;
         private Color _color = Color.White;
-        private Transform _transform;
         private SpriteBatch _spriteBatch;
-
+        private Transform _transform;
         //Constructors
         public SpriteRenderer(Texture2D texture, SpriteBatch spriteBatch)
         {
@@ -20,6 +22,7 @@ namespace Advanced2
         public override void Awake(GameObject gameObject)
         {
             _transform = gameObject.Transform;
+            //Debug.WriteLine(i);
         }
 
 
@@ -32,7 +35,6 @@ namespace Advanced2
         private void _Draw(Transform transform, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
         {
             _spriteBatch.Draw(Texture, transform.Position, null, _color, MathHelper.ToRadians(transform.Rotation), new Vector2(transform.AnchorPoint.X * Texture.Width, transform.AnchorPoint.Y * Texture.Height), transform.Scale, SpriteEffects.None, (Single)transform.LayerDepth);
-            Console.WriteLine("RENDER");
         }
 
         //Texture is already set in the constructor, however, we might want to change the sprite during runtime

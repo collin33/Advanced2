@@ -34,7 +34,6 @@ namespace Advanced2
             {
                 _components[i].Awake(this);
             }
-            Debug.WriteLine(_components.Count);
         }
 
         public void Update(int Time) 

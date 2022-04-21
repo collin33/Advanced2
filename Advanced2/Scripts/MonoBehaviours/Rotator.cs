@@ -20,11 +20,11 @@
         {
             if (TimeInMilliseconds > 10800)
             { TimeInMilliseconds -= 10800; }
-            TimeDecreaser(Time);
+            TimeFormula(Time);
             _transform.Rotation += RotaterPower * TimeInMilliseconds;
         }
 
-        private void TimeDecreaser(int CurrentTime)
+        private void TimeFormula(int CurrentTime)
         {
             TimeInMilliseconds = CurrentTime / 10;
         }
