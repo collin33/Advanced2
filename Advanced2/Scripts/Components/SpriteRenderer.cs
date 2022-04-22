@@ -1,23 +1,59 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-class SpriteRenderer
+using System.Collections.Generic;
+using System.Diagnostics;
+
+namespace Advanced2
 {
-    private Texture2D _texture;
-    //private SpriteBatch _spriteBatch;
-    public SpriteRenderer(Texture2D texture)
+    class SpriteRenderer : Component, IDrawableComponent
     {
-        _texture = texture;
-    }
+        private Texture2D _texture;
+        private Color _color = Color.White;
+        private SpriteBatch _spriteBatch;
+        private Transform _transform;
+        //Constructors
+        public SpriteRenderer(Texture2D texture, SpriteBatch spriteBatch)
+        {
+            _texture = texture;
+            _spriteBatch = spriteBatch;
+        }
 
-    public void Draw(Transform GameObject, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
-    {
-        _spriteBatch.Draw(Texture, GameObject.Position, null, Color.White, MathHelper.ToRadians(GameObject.Rotation), new Vector2 (GameObject.AnchorPoint.X * Texture.Width, GameObject.AnchorPoint.Y * Texture.Height) , GameObject.Scale, SpriteEffects.None, (Single)GameObject.LayerDepth);
-    }
+        public override void Awake(GameObject gameObject)
+        {
+            _transform = gameObject.Transform;
+            //Debug.WriteLine(i);
+        }
 
-    public Texture2D Texture
-    {
-        get { return _texture; }
-        set { _texture = value; }
+
+        public virtual void Draw()
+        {
+            _Draw(_transform, _spriteBatch, _texture);
+        }
+
+
+        private void _Draw(Transform transform, SpriteBatch _spriteBatch, Texture2D Texture)//Vector2 Position, float Rotation, Vector2 Anchorpoint, float Scale)
+        {
+            _spriteBatch.Draw(Texture, transform.Position, null, _color, MathHelper.ToRadians(transform.Rotation), new Vector2(transform.AnchorPoint.X * Texture.Width, transform.AnchorPoint.Y * Texture.Height), transform.Scale, SpriteEffects.None, (Single)transform.LayerDepth);
+        }
+
+        //Texture is already set in the constructor, however, we might want to change the sprite during runtime
+        public Texture2D Texture
+        {
+            get { return _texture; }
+            set { _texture = value; }
+        }
+
+        public Color Color
+        {
+            get { return _color; }
+            set { _color = value; }
+        }
+
+        public SpriteBatch SpriteBatch
+        {
+            get { return SpriteBatch; }
+            set { SpriteBatch = value; }
+        }
     }
 }
