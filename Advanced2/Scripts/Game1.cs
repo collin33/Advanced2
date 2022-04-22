@@ -12,7 +12,7 @@ namespace Advanced2
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         Texture2D _testMikuTexture;
-        Texture2D _littleStarTexture;
+        Texture2D _sonicSpriteSheet;
 
         SpriteFont _defaultFont;
 
@@ -26,6 +26,7 @@ namespace Advanced2
         GameObject test4;
         GameObject test5;
         GameObject test6;
+        GameObject test7;
 
         public Game1()
         {
@@ -49,7 +50,7 @@ namespace Advanced2
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             Viewport viewport = _graphics.GraphicsDevice.Viewport;
-            _littleStarTexture = Content.Load<Texture2D>("LittleStar");
+            _sonicSpriteSheet = Content.Load<Texture2D>("SonicRunSpritesheet");
             _testMikuTexture = Content.Load<Texture2D>("MikuLeek");
             _defaultFont = Content.Load<SpriteFont>("Arial");
 
@@ -73,6 +74,7 @@ namespace Advanced2
             test4.Update(elapsedTime);
             test5.Update(elapsedTime);
             test6.Update(elapsedTime);
+            test7.Update(elapsedTime);
             _stopWatch.Restart();
 
             base.Update(gameTime);
@@ -91,6 +93,7 @@ namespace Advanced2
             test4.Draw();
             test5.Draw();
             test6.Draw();
+            test7.Draw();
             _spriteBatch.End();
 
             base.Draw(gameTime);
@@ -105,6 +108,8 @@ namespace Advanced2
             Transform transform4 = new Transform(new Vector2(viewport.Width * 0.32f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
             Transform transform5 = new Transform(new Vector2(viewport.Width * 0.68f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
             Transform transform6 = new Transform(new Vector2(viewport.Width * 0.50f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform7 = new Transform(new Vector2((viewport.Width * 0.50f)-66, (viewport.Height * 0.68f)-33), new Vector2(0f, 0f), 0, new Vector2(2, 2));
+
 
             SpriteRenderer testRenderer0 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
             SpriteRenderer testRenderer1 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
@@ -113,6 +118,8 @@ namespace Advanced2
             SpriteRenderer testRenderer4 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
             SpriteRenderer testRenderer5 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
             SpriteRenderer testRenderer6 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+
+            AnimatedSpriteRenderer testRenderer7 = new AnimatedSpriteRenderer(_sonicSpriteSheet, _spriteBatch, new Vector2 (66,66), new Vector2(6,1));
 
             Rotator testRotator0 = new Rotator(5);
             Rotator testRotator1 = new Rotator(5);
@@ -143,6 +150,7 @@ namespace Advanced2
             test4 = new GameObject("test", transform4, new List<Component> { testRenderer4, testScaler1, testBouncer3 });
             test5 = new GameObject("test", transform5, new List<Component> { testRenderer5, testcolorShifter2, testBouncer4 });
             test6 = new GameObject("test", transform6, new List<Component> { testRenderer6, testRotator0, testBouncer0, testcolorShifter0, testScaler0 });
+            test7 = new GameObject("test", transform7, new List<Component> { testRenderer7 });
 
             // TODO: use this.Content to load your game content here
 
@@ -153,6 +161,7 @@ namespace Advanced2
             test4.Awake();
             test5.Awake();
             test6.Awake();
+            test7.Awake();
         }
     }
 }
