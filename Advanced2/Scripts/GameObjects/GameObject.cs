@@ -1,13 +1,76 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-class GameObject
-{
-    //Components
-    public Transform _Transform = new Transform(new Vector2(0, 0), new Vector2((float)0.5, (float)0.5), 0, new Vector2(1, 1));
-    public SpriteRenderer _SpriteRenderer = new SpriteRenderer(null);
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
-    public virtual void ObjectUpdate()
+namespace Advanced2
+{
+    public class GameObject
     {
-        //System.Diagnostics.Debug.Write("GameObjectUpdate"); 
+        //Fields
+        private string _name;
+
+        private Transform _transform;
+
+        private List<MonoBehaviour> _components = new List<MonoBehaviour>();
+
+        //Properties
+        public string Name => _name;
+        public Transform Transform => _transform;
+
+
+        //Constructor
+        public GameObject(string pName, Transform pTransform, List<MonoBehaviour> testComponents)
+        {
+            _name = pName;
+            _transform = pTransform;
+            _components.AddRange(testComponents);
+        }
+
+        public void Awake()
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Awake(this);
+            }
+        }
+
+        public void Update(int Time) 
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Update(Time);
+            }
+        }
+
+        public void Draw()
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                _components[i].Draw();
+            }
+        }
+
+        public T GetComponent<T>() where T : MonoBehaviour
+        {
+            for (int i = 0; i < _components.Count; i++)
+            {
+                MonoBehaviour currentBehaviour = _components[i];
+
+                if (currentBehaviour is T)
+                {
+                    return currentBehaviour as T;
+                }
+
+            }
+            return null;
+        }
+
+        public virtual void ObjectUpdate()
+        {
+            //System.Diagnostics.Debug.Write("GameObjectUpdate"); 
+            GetComponent<SpriteRenderer>();
+        }
     }
 }

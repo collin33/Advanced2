@@ -10,14 +10,6 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="Scripts\NewFolder\**" />
-    <Compile Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
-    <EmbeddedResource Remove="Scripts\NewFolder\**" />
-    <EmbeddedResource Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
-    <None Remove="Scripts\NewFolder\**" />
-    <None Remove="Scripts\TestScenes\Opdracht 3\Scene Summaries\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Icon.ico" />
     <None Remove="Icon.bmp" />
   </ItemGroup>
