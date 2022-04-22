@@ -53,50 +53,7 @@ namespace Advanced2
             _testMikuTexture = Content.Load<Texture2D>("MikuLeek");
             _defaultFont = Content.Load<SpriteFont>("Arial");
 
-            Transform transform0 = new Transform(new Vector2(viewport.Width * 0.32f, viewport.Height * 0.19f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-            Transform transform1 = new Transform(new Vector2(viewport.Width * 0.68f, viewport.Height * 0.19f), new Vector2(0.5f, 0.5f), 0, new Vector2(1 ,1));
-            Transform transform2 = new Transform(new Vector2(viewport.Width * 0.15f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-            Transform transform3 = new Transform(new Vector2(viewport.Width * 0.85f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-            Transform transform4 = new Transform(new Vector2(viewport.Width * 0.32f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-            Transform transform5 = new Transform(new Vector2(viewport.Width * 0.68f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-            Transform transform6 = new Transform(new Vector2(viewport.Width * 0.50f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
-
-            SpriteRenderer testRenderer0 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer1 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer2 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer3 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer4 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer5 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            SpriteRenderer testRenderer6 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
-            Rotator testRotator1 = new Rotator(10);
-            Rotator testRotator2 = new Rotator(10);
-            Bouncer testBouncer1 = new Bouncer(30, 0.5f);
-            Bouncer testBouncer2 = new Bouncer(30, 0.5f);
-            ColorShifter testcolorShifter1 = new ColorShifter(3f);
-            ColorShifter testcolorShifter2 = new ColorShifter(3f);
-
-            //Oscillator testOscillator = new Oscillator(10, 2);
-            //ColorShifterObject testColorShifter = new ColorShifter(2.0f);
-            //Scaler testScaler = new Scaler(2.0f);//optional
-
-            //GameObject test = new GameObject("test", testTransform, new List<MonoBehaviour>() { testRenderer, testRotator, testOscillator, testColorShifter, testScaler});
-            test0 = new GameObject("test", transform0, new List<MonoBehaviour> { testRenderer0, testRotator2, testBouncer1});
-            test1 = new GameObject("test", transform1, new List<MonoBehaviour> { testRenderer1, testBouncer2, testcolorShifter1});
-            test2 = new GameObject("test", transform2, new List<MonoBehaviour> { testRenderer2, testRotator1 });
-            test3 = new GameObject("test", transform3, new List<MonoBehaviour> { testRenderer3, testcolorShifter2 });
-            test4 = new GameObject("test", transform4, new List<MonoBehaviour> { testRenderer4 });
-            test5 = new GameObject("test", transform5, new List<MonoBehaviour> { testRenderer5 });
-            test6 = new GameObject("test", transform6, new List<MonoBehaviour> { testRenderer6 });
-
-            // TODO: use this.Content to load your game content here
-
-            test0.Awake();
-            test1.Awake();
-            test2.Awake();
-            test3.Awake();
-            test4.Awake();
-            test5.Awake();
-            test6.Awake();
+            CreateObjects(viewport);
         }
 
         protected override void Update(GameTime gameTime)
@@ -109,7 +66,6 @@ namespace Advanced2
 
             int elapsedTime = ts.Milliseconds;
             //System.Diagnostics.Debug.Write("RunTime " + ts.Milliseconds);
-
             test0.Update(elapsedTime);
             test1.Update(elapsedTime);
             test2.Update(elapsedTime);
@@ -138,6 +94,65 @@ namespace Advanced2
             _spriteBatch.End();
 
             base.Draw(gameTime);
+        }
+        private void CreateObjects(Viewport viewport)
+        {
+
+            Transform transform0 = new Transform(new Vector2(viewport.Width * 0.32f, viewport.Height * 0.19f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform1 = new Transform(new Vector2(viewport.Width * 0.68f, viewport.Height * 0.19f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform2 = new Transform(new Vector2(viewport.Width * 0.15f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform3 = new Transform(new Vector2(viewport.Width * 0.85f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform4 = new Transform(new Vector2(viewport.Width * 0.32f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform5 = new Transform(new Vector2(viewport.Width * 0.68f, viewport.Height * 0.81f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+            Transform transform6 = new Transform(new Vector2(viewport.Width * 0.50f, viewport.Height * 0.50f), new Vector2(0.5f, 0.5f), 0, new Vector2(1, 1));
+
+            SpriteRenderer testRenderer0 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer1 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer2 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer3 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer4 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer5 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+            SpriteRenderer testRenderer6 = new SpriteRenderer(_testMikuTexture, _spriteBatch);
+
+            Rotator testRotator0 = new Rotator(5);
+            Rotator testRotator1 = new Rotator(5);
+            Rotator testRotator2 = new Rotator(5);
+            Rotator testRotator3 = new Rotator(5);
+            Rotator testRotator4 = new Rotator(5);
+
+            Bouncer testBouncer0 = new Bouncer(30, 0.5f);
+            Bouncer testBouncer1 = new Bouncer(30, 0.5f);
+            Bouncer testBouncer2 = new Bouncer(30, 0.5f);
+            Bouncer testBouncer3 = new Bouncer(30, 0.5f);
+            Bouncer testBouncer4 = new Bouncer(30, 0.5f);
+            Bouncer testBouncer5 = new Bouncer(30, 0.5f);
+
+            ColorShifter testcolorShifter0 = new ColorShifter(3f);
+            ColorShifter testcolorShifter1 = new ColorShifter(3f);
+            ColorShifter testcolorShifter2 = new ColorShifter(3f);
+            ColorShifter testcolorShifter3 = new ColorShifter(3f);
+
+            Scaler testScaler0 = new Scaler(0.4f, 0.2f);
+            Scaler testScaler1 = new Scaler(0.4f, 0.2f);
+            Scaler testScaler2 = new Scaler(0.4f, 0.2f);
+
+            test0 = new GameObject("test", transform0, new List<MonoBehaviour> { testRenderer0, testRotator1, testBouncer5 });
+            test1 = new GameObject("test", transform1, new List<MonoBehaviour> { testRenderer1, testRotator2, testcolorShifter1 });
+            test2 = new GameObject("test", transform2, new List<MonoBehaviour> { testRenderer2, testScaler2, testBouncer1, testRotator3 });
+            test3 = new GameObject("test", transform3, new List<MonoBehaviour> { testRenderer3, testBouncer2, testcolorShifter3, testRotator4 });
+            test4 = new GameObject("test", transform4, new List<MonoBehaviour> { testRenderer4, testScaler1, testBouncer3 });
+            test5 = new GameObject("test", transform5, new List<MonoBehaviour> { testRenderer5, testcolorShifter2, testBouncer4 });
+            test6 = new GameObject("test", transform6, new List<MonoBehaviour> { testRenderer6, testRotator0, testBouncer0, testcolorShifter0, testScaler0 });
+
+            // TODO: use this.Content to load your game content here
+
+            test0.Awake();
+            test1.Awake();
+            test2.Awake();
+            test3.Awake();
+            test4.Awake();
+            test5.Awake();
+            test6.Awake();
         }
     }
 }

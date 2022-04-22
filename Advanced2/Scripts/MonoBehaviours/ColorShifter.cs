@@ -48,8 +48,6 @@ namespace Advanced2
             if (TimePassedInMilliseconds > 10800)
             { TimePassedInMilliseconds -= 10800; }
 
-            //Debug.WriteLine((float)(TimeInMilliseconds/1080));
-
             //Updating the _hue value according to the passed time since the last Update call, multiplied with the configured shift speed.
             _hue += TimePassedInMilliseconds / 10800;
 
