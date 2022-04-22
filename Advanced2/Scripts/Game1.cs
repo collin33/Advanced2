@@ -136,13 +136,13 @@ namespace Advanced2
             Scaler testScaler1 = new Scaler(0.4f, 0.2f);
             Scaler testScaler2 = new Scaler(0.4f, 0.2f);
 
-            test0 = new GameObject("test", transform0, new List<MonoBehaviour> { testRenderer0, testRotator1, testBouncer5 });
-            test1 = new GameObject("test", transform1, new List<MonoBehaviour> { testRenderer1, testRotator2, testcolorShifter1 });
-            test2 = new GameObject("test", transform2, new List<MonoBehaviour> { testRenderer2, testScaler2, testBouncer1, testRotator3 });
-            test3 = new GameObject("test", transform3, new List<MonoBehaviour> { testRenderer3, testBouncer2, testcolorShifter3, testRotator4 });
-            test4 = new GameObject("test", transform4, new List<MonoBehaviour> { testRenderer4, testScaler1, testBouncer3 });
-            test5 = new GameObject("test", transform5, new List<MonoBehaviour> { testRenderer5, testcolorShifter2, testBouncer4 });
-            test6 = new GameObject("test", transform6, new List<MonoBehaviour> { testRenderer6, testRotator0, testBouncer0, testcolorShifter0, testScaler0 });
+            test0 = new GameObject("test", transform0, new List<Component> { testRenderer0, testRotator1, testBouncer5 });
+            test1 = new GameObject("test", transform1, new List<Component> { testRenderer1, testRotator2, testcolorShifter1 });
+            test2 = new GameObject("test", transform2, new List<Component> { testRenderer2, testScaler2, testBouncer1, testRotator3 });
+            test3 = new GameObject("test", transform3, new List<Component> { testRenderer3, testBouncer2, testcolorShifter3, testRotator4 });
+            test4 = new GameObject("test", transform4, new List<Component> { testRenderer4, testScaler1, testBouncer3 });
+            test5 = new GameObject("test", transform5, new List<Component> { testRenderer5, testcolorShifter2, testBouncer4 });
+            test6 = new GameObject("test", transform6, new List<Component> { testRenderer6, testRotator0, testBouncer0, testcolorShifter0, testScaler0 });
 
             // TODO: use this.Content to load your game content here
 

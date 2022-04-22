@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 namespace Advanced2
 {
-    public class Transform : MonoBehaviour
+    public class Transform : Component
     {
         private Vector2 _position = new Vector2(0, 0);
         private Vector2 _anchorPoint = new Vector2((float)0.5, (float)0.5);

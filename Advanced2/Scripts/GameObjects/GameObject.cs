@@ -13,7 +13,9 @@ namespace Advanced2
 
         private Transform _transform;
 
-        private List<MonoBehaviour> _components = new List<MonoBehaviour>();
+        private List<Component> _components = new List<Component>();
+        private List<IDrawableComponent> _IDrawableComponents = new List<IDrawableComponent>();
+        private List<IUpdateableComponent> _IUpdateableComponents = new List<IUpdateableComponent>();
 
         //Properties
         public string Name => _name;
@@ -21,11 +23,24 @@ namespace Advanced2
 
 
         //Constructor
-        public GameObject(string pName, Transform pTransform, List<MonoBehaviour> testComponents)
+        public GameObject(string pName, Transform pTransform, List<Component> testComponents)
         {
             _name = pName;
             _transform = pTransform;
             _components.AddRange(testComponents);
+
+            for (int i = 0; i < testComponents.Count; i++)
+            {
+                if (testComponents[i] is IDrawableComponent _IDrawableComponent)
+                {
+                    _IDrawableComponents.Add(_IDrawableComponent);
+                }
+                if (testComponents[i] is IUpdateableComponent _IUpdateableComponent)
+                {
+                    _IUpdateableComponents.Add(_IUpdateableComponent);
+                }
+            }
+
         }
 
         public void Awake()
@@ -38,25 +53,25 @@ namespace Advanced2
 
         public void Update(int Time) 
         {
-            for (int i = 0; i < _components.Count; i++)
+            for (int i = 0; i < _IUpdateableComponents.Count; i++)
             {
-                _components[i].Update(Time);
+                _IUpdateableComponents[i].Update(Time);
             }
         }
 
         public void Draw()
         {
-            for (int i = 0; i < _components.Count; i++)
+            for (int i = 0; i < _IDrawableComponents.Count; i++)
             {
-                _components[i].Draw();
+                _IDrawableComponents[i].Draw();
             }
         }
 
-        public T GetComponent<T>() where T : MonoBehaviour
+        public T GetComponent<T>() where T : Component
         {
             for (int i = 0; i < _components.Count; i++)
             {
-                MonoBehaviour currentBehaviour = _components[i];
+                Component currentBehaviour = _components[i];
 
                 if (currentBehaviour is T)
                 {

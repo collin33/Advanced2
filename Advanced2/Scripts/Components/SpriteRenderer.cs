@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Advanced2
 {
-    class SpriteRenderer : MonoBehaviour
+    class SpriteRenderer : Component, IDrawableComponent
     {
         private Texture2D _texture;
         private Color _color = Color.White;
@@ -26,7 +26,7 @@ namespace Advanced2
         }
 
 
-        public override void Draw()
+        public virtual void Draw()
         {
             _Draw(_transform, _spriteBatch, _texture);
         }
